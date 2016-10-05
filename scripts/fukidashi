@@ -1,0 +1,37 @@
+# Description:
+#   突然の死ジェネレーター Hubot版をほぼそのまま移植
+#   https://github.com/aozora0000/hubot-totsuzen
+#
+# Dependencies:
+#   None
+#
+# Configuration:
+#   None
+#
+# Commands:
+#   hubot !![hogehoge]!!
+#   hubot totsuzen [query] - Receive [query]！
+#
+String::lengthByte = ->
+  str = this
+  r = 0
+  for i in [0..str.length - 1]
+    c = str.charCodeAt(i)
+    if (c >= 0x0 && c < 0x81) || (c == 0xf8f0) || (c >= 0xff61 && c < 0xffa0) || (c >= 0xf8f1 && c < 0xf8f4)
+      r += 1
+    else
+      r += 2
+  return r
+
+String::repeat = (n) ->
+  return new Array(n + 1).join(this)
+
+module.exports = (robot) ->
+
+  robot.respond /!!.*(.*)?!!/i, (msg) ->
+    str = if msg.match[1] then msg.match[1].trim()+"！"
+    len = Math.floor(str.lengthByte() / 2)
+
+    msg.send "＿" + ("人".repeat(len + 2)) + "＿"
+    msg.send "＞　" + str + "　＜"
+    msg.send "￣" + ("Ｙ".repeat(len + 2)) + "￣"
