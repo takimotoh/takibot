@@ -14,7 +14,7 @@ module.exports = (robot) ->
       when 4
         res = "朝陽「僕ムズムズした…」"
       when 5
-        res = "悠陽ちゃんの妹です"
+        res = "悠陽ちゃんのお兄ちゃんです"
       else
         res = "('ω')"
 
