@@ -18,7 +18,7 @@ module.exports = (robot) ->
                 res = args1 + ":" + args2 + ":" + args3 + ":" + args4
 
             when "2"
-                if args2? or args3? or args4?
+                if args2? && args3? && args4?
                     res = args1 + ":" + args2 + ":" + args3 + ":" + args4
                 else
                     res = "args はnull"
