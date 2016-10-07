@@ -9,7 +9,7 @@ module.exports = (robot) ->
     switch command
       when "1"
         for name, index in names
-            res = "Hello, #{name} (#{index})!"
+            res += "Hello, #{name} (#{index})!"
 
       else
         res = "?"
