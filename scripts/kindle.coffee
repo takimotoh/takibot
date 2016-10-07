@@ -39,7 +39,7 @@ module.exports = (robot) ->
             
             # 管理者にDM送信
             msg = "@takimotoh  #{user}さんが本返すって(´・ω・`)"
-            obot.adapter.client.openDM userId, (data) ->
+            robot.adapter.client.openDM userId, (data) ->
               robot.send {room: takimotoh}, msg
 
           when "help"
