@@ -4,9 +4,9 @@
 #
 #  robot.hear /kindleコメ/i, (msg) ->
 #
-#    if _.contains ['kindle', 'kindle_test'], msg.envelope.room
+#    if "C25BV33L5" is msg.message.user.room
 #
-#        if _.contains ['takimotoh'], msg.envelope.user.name
+#        if "takimotoh" is msg.message.user.room
 #          msg.send "Kindle!!"
 #
 #        else
