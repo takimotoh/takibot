@@ -7,7 +7,7 @@ module.exports = (robot) ->
     com4 = msg.match[4]          # コマンド
     res = ""
 
-    switch com
+    switch com1
 
         when "1"
             res = com1 + ":" + com2 + ":" + com3 + ":" + com4
