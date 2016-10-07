@@ -15,3 +15,4 @@ module.exports = (robot) ->
     else
       msg.send "#kindle チャンネルで言ってよ(´・ω・`)"
 
+
