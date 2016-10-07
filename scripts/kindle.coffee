@@ -5,7 +5,8 @@ module.exports = (robot) ->
         command = msg.match[1]          # コマンド
         user = msg.message.user.name    # 発言者
         res = ""                        # botの返答
-        name = ""                        # botの返答
+        name = ""                       # botの返答
+
         kanrisyadake = "管理者用のコマンドっす"
         daihyoudake = "代表専用( *´艸｀)"
 

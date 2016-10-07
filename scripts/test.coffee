@@ -7,9 +7,19 @@ module.exports = (robot) ->
     names = ["takimotoh", "aaaa", "bot"]
 
     switch command
+
       when "1"
         for name, index in names
             res += "Hello, #{name} (#{index})!"
+
+      when "2"
+          res = message.user.id
+
+      when "3"
+          res = message.user.name
+
+
+
 
       else
         res = "?"
