@@ -23,15 +23,14 @@ module.exports = (robot) ->
             res = "@#{user} さんのレンタルリストだよ(´・ω・`)"
 
           when "貸して"
-            res = "@takimotoh #{user}さんからリクエストだよ(´・ω・`)"
-#            res = "○さんからリクエストだよ(´・ω・`)"
+            res = "@takimotoh  #{user}さんからリクエストだよ(´・ω・`)"
 
           when "返す"
-#            res = """
-#                  @#{user} さん、端末からその本消しておいてね(´・ω・`)"
-#                  @takimotoh  #{user}さんが本返すって(´・ω・`)"
-#                  """
-            res = "@takimotoh  ○さんが本返すって(´・ω・`)"
+            res = """
+            @#{user} さん、端末からその本消しておいてね(´・ω・`)"
+            @takimotoh  #{user}さんが本返すって(´・ω・`)"
+            """
+#            res = "@takimotoh  ○さんが本返すって(´・ω・`)"
 
 
           when "help"
