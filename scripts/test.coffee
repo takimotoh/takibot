@@ -7,8 +7,7 @@ module.exports = (robot) ->
     names = ["takimotoh", "aaaa", "bot"]
 
     switch command
-      when 1
-
+      when "1"
         for name, index in names
             res = "Hello, #{name} (#{index})!"
 
