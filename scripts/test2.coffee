@@ -10,11 +10,13 @@ module.exports = (robot) ->
     switch args1
 
         when "1"
-        
-            if args2 is NULL
+            res = args1 + ":" + args2 + ":" + args3 + ":" + args4
+
+        when "2"
+            unless args2?
                 res = "args2 はnull"
-            else
-                res = args1 + ":" + args2 + ":" + args3 + ":" + args4
+
+            res = args1 + ":" + args2 + ":" + args3 + ":" + args4
 
 
 
