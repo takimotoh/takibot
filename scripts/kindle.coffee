@@ -33,7 +33,7 @@ module.exports = (robot) ->
                     for erai, index in eraihito
                         res = "@#{erai}さん、#{user}さんが本欲しいって(´・ω・`)"
                         msg.send res
-                    res = @#{user} さん、申請の許可待ちだよ(´・ω・`)"
+                    res = "@#{user} さん、申請の許可待ちだよ(´・ω・`)"
 
                 when "リスト"
                     res = "これが今ある本の一覧だよ(´・ω・`)"
