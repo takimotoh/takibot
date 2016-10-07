@@ -1,6 +1,6 @@
 module.exports = (robot) ->
 
-  robot.hear /test(.*)/i, (msg) ->
+  robot.hear /test_(.*)/i, (msg) ->
     command = msg.match[1]          # コマンド
     res = ""
 
@@ -12,14 +12,14 @@ module.exports = (robot) ->
         for name, index in names
             res += "Hello, #{name} (#{index})!"
 
-      when "2"
+      when "id"
           res = msg.message.user.id
 
-      when "3"
+      when "name"
           res = msg.message.user.name
 
-
-
+      when "room"
+          res = msg.message.user.room
 
       else
         res = "?"
