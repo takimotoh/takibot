@@ -1,11 +1,6 @@
 module.exports = (robot) ->
 
     robot.hear /test2_(.*)/i, (msg) ->
-        args1 = ""
-        args2 = ""
-        args3 = ""
-        args4 = ""
-  
         args1 = msg.match[1].split(" ")[0]          # コマンド
         args2 = msg.match[1].split(" ")[1]          # コマンド
         args3 = msg.match[1].split(" ")[2]          # コマンド
