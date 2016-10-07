@@ -74,10 +74,15 @@ module.exports = (robot) ->
         #*************************************************************#
         # 変数                                                        #
         #*************************************************************#
-        command = msg.match[1]          # コマンド
-        user = msg.message.user.name    # 発言者
-        res = "ERROR"                   # botの返答
-        name = ""                       # 
+        args1 = msg.match[1].split(" ")[0]    # 引数1
+        args2 = msg.match[1].split(" ")[1]    # 引数2
+        args3 = msg.match[1].split(" ")[2]    # 引数3
+        args4 = msg.match[1].split(" ")[3]    # 引数4
+
+        command = args1                       # コマンド
+        user = msg.message.user.name          # 発言者
+        res = "ERROR"                         # botの返答
+        name = ""                             # 
 
         #=============================#
         # kindle_testチャンネルの場合 #
@@ -92,7 +97,7 @@ module.exports = (robot) ->
                 #----------------#
                 when "欲しい"
                     for erai, index in eraihito
-                        res = "@#{erai}さん、#{user}さんが本欲しいって(´・ω・`)"
+                        res = "@#{erai}さん、#{user}さんが#{args2}の本欲しいって(´・ω・`)"
                         msg.send res
                     res = "@#{user} さん、申請の許可待ちだよ(´・ω・`)"
 
@@ -103,12 +108,12 @@ module.exports = (robot) ->
                     res = "@#{user} さんのレンタルリストだよ(´・ω・`)"
 
                 when "貸して"
-                    res = "@#{mainAdmin}  #{user}さんからリクエストだよ(´・ω・`)"
+                    res = "@#{mainAdmin}  #{user}「#{args2}の本、かーしーて(´・ω・`)」"
 
                 when "返す"
                     res = """
                     @#{user} さん、端末からその本消しておいてね(´・ω・`)"
-                    @#{mainAdmin}  #{user}さんが本返すって(´・ω・`)"
+                    @#{mainAdmin}  #{user}さんが#{args2}の本返すって(´・ω・`)"
                     """
 
                 when "help"
@@ -121,13 +126,13 @@ module.exports = (robot) ->
                     res = daihyoudake
                     for name, index in eraihito
                         if name is msg.message.user.name
-                            res = "@#{mainAdmin}  本買っていいって(´・ω・`)"
+                            res = "@#{mainAdmin}  #{args2}の本買っていいって(´・ω・`)"
 
                 when "no"
                     res = daihyoudake
                     for name, index in eraihito
                         if name is msg.message.user.name
-                            res = "ダメだって(´・ω・`)"
+                            res = "#{args2}の本は買っちゃダメだって(´・ω・`)"
 
                 #------------------#
                 # 管理者用コマンド #
@@ -136,31 +141,31 @@ module.exports = (robot) ->
                     res = kanrisyadake
                     for name, index in adminMember
                         if name is msg.message.user.name
-                            res = "本の情報を登録したよ(´・ω・`)"
+                            res = "#{args2}の本の情報を登録したよ(´・ω・`)"
 
                 when "配信"
                     res = kanrisyadake
                     for name, index in adminMember
                         if name is msg.message.user.name
-                            res = "申請者さん、配信したよ(´・ω・`)"
+                            res = "@#{args2} さん、#{args3}の本を配信したよ(´・ω・`)"
 
                 when "返却"
                     res = kanrisyadake
                     for name, index in adminMember
                         if name is msg.message.user.name
-                            res = "返してもらったよ(´・ω・`)"
+                            res = "#{args3}の本の貸し出しリストから#{args2}さんは削除したよ(´・ω・`)"
 
                 when "入社"
                     res = kanrisyadake
                     for name, index in adminMember
                         if name is msg.message.user.name
-                            res = "名前を登録したよ(´・ω・`)"
+                            res = "OK! #{args2}さんは#{args3}で登録したよ(´・ω・`)"
 
                 when "退社"
                     res = kanrisyadake
                     for name, index in adminMember
                         if name is msg.message.user.name
-                            res = "名前を削除したよ(´・ω・`)"
+                            res = "〈#{args2}：#{args3}〉さんを削除したよ(´・ω・`)"
 
                 when "kanri"
                     res = kanrisyadake
@@ -178,7 +183,7 @@ module.exports = (robot) ->
         # kindle_testチャンネルではない場合 #
         #===================================#
         else
-            res = "#kindle_test チャンネルで言ってよ(´・ω・`)"
+            res = "@#{user}さん、それは #kindle_test チャンネルで言ってよ(´・ω・`)"
 
         #*********************#
         # botの返答メッセージ #
