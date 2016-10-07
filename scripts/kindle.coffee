@@ -2,17 +2,22 @@ module.exports = (robot) ->
 
   robot.hear /kindle_(.*)/i, (msg) ->
 
-    command = msg.match[1]
-    user = msg.message.user.name
-    res = ""
+    command = msg.match[1]          # コマンド
+    user = msg.message.user.name    # 発言者
+    res = ""                        # botの返答
+    msg = ""                        # DM
 
-    # kindle_testチャンネルの場合
+    #*****************************#
+    # kindle_testチャンネルの場合 #
+    #*****************************#
     if "C25BV33L5" is msg.message.user.room
 
         # 内容により分岐
         switch command
 
-          # 社員用コマンド
+          #----------------#
+          # 社員用コマンド #
+          #----------------#
           when "欲しい"
             res = "欲しいのか(´・ω・`)"
 
@@ -26,20 +31,26 @@ module.exports = (robot) ->
             res = "@takimotoh  #{user}さんからリクエストだよ(´・ω・`)"
 
           when "返す"
-            res = """
-            @#{user} さん、端末からその本消しておいてね(´・ω・`)"
-            @takimotoh  #{user}さんが本返すって(´・ω・`)"
-            """
-#            res = "@takimotoh  ○さんが本返すって(´・ω・`)"
-
+#            res = """
+#            @#{user} さん、端末からその本消しておいてね(´・ω・`)"
+#            @takimotoh  #{user}さんが本返すって(´・ω・`)"
+#            """
+            res = "@#{user} さん、端末からその本消しておいてね(´・ω・`)"
+            
+            # 管理者にDM送信
+            msg = "@takimotoh  #{user}さんが本返すって(´・ω・`)"
+            obot.adapter.client.openDM userId, (data) ->
+              robot.send {room: takimotoh}, msg
 
           when "help"
             res = "help？？('ω')"
 
-          # 管理者用コマンド
+          #------------------#
+          # 管理者用コマンド #
+          #------------------#
           when "貸す"
             if "takimotoh" is msg.message.user.name
-              res = "○ さん、配信したよ(´・ω・`)"
+              res = "@#{user} さん、配信したよ(´・ω・`)"
             else
               res = "Kindle管理者用のコマンドっす"
 
@@ -53,9 +64,13 @@ module.exports = (robot) ->
           else
             res = "何したいのさ('ω')"
 
-    # kindle_testチャンネルではない場合
+    #***********************************#
+    # kindle_testチャンネルではない場合 #
+    #***********************************#
     else
       res =  "#kindle_test チャンネルで言ってよ(´・ω・`)"
 
-    # botの返答
+    #***********#
+    # botの返答 #
+    #***********#
     msg.send res
