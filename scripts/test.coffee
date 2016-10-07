@@ -13,10 +13,10 @@ module.exports = (robot) ->
             res += "Hello, #{name} (#{index})!"
 
       when "2"
-          res = message.user.id
+          res = msg.message.user.id
 
       when "3"
-          res = message.user.name
+          res = msg.message.user.name
 
 
 
