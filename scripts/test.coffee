@@ -18,3 +18,4 @@ module.exports = (robot) ->
     # botの返答 #
     #***********#
     msg.send res
+
