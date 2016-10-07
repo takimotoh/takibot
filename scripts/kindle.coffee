@@ -5,6 +5,7 @@ module.exports = (robot) ->
         command = msg.match[1]          # コマンド
         user = msg.message.user.name    # 発言者
         res = ""                        # botの返答
+        name = ""                        # botの返答
         kanrisyadake = "管理者用のコマンドっす"
         daihyoudake = "代表専用( *´艸｀)"
 
@@ -89,58 +90,49 @@ module.exports = (robot) ->
                 # 田中さん用コマンド #
                 #--------------------#
                 when "ok"
+                    res = daihyoudake
                     for name, index in eraihito
                         if name is msg.message.user.name
                             res = "@#{mainadmin}  本買っていいって(´・ω・`)"
-                            msg.send res
-                        else
-                            res = daihyoudake
 
                 when "no"
+                    res = daihyoudake
                     for name, index in eraihito
                         if name is msg.message.user.name
                             res = "ダメだって(´・ω・`)"
-                            msg.send res
-                        else
-                            res = daihyoudake
 
                 #------------------#
                 # 管理者用コマンド #
                 #------------------#
                 when "買った"
+                    res = kanrisyadake
                     for name, index in admin
                         if name is msg.message.user.name
                             res = "本の情報を登録したよ(´・ω・`)"
-                   else
-                        res = kanrisyadake
-                
+
                 when "配信"
+                    res = kanrisyadake
                     for name, index in admin
                         if name is msg.message.user.name
                             res = "申請者さん、配信したよ(´・ω・`)"
-                   else
-                        res = kanrisyadake
 
                 when "返却"
+                    res = kanrisyadake
                     for name, index in admin
                         if name is msg.message.user.name
                             res = "返してもらったよ(´・ω・`)"
-                   else
-                        res = kanrisyadake
 
                 when "入社"
+                    res = kanrisyadake
                     for name, index in admin
                         if name is msg.message.user.name
                             res = "名前を登録したよ(´・ω・`)"
-                   else
-                        res = kanrisyadake
 
                 when "退社"
+                    res = kanrisyadake
                     for name, index in admin
                         if name is msg.message.user.name
                             res = "名前を削除したよ(´・ω・`)"
-                   else
-                        res = kanrisyadake
 
                 #-------------#
                 # コマンド無し#
