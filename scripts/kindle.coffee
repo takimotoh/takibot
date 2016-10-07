@@ -11,6 +11,6 @@ module.exports = (robot) ->
           msg.send "Kindle管理者用のコマンドっす"
       
     else
-      msg.send "#kindle チャンネルで言ってよ(´・ω・`)"
+      msg.send "#kindle_test チャンネルで言ってよ(´・ω・`)"
 
 
