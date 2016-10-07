@@ -2,12 +2,9 @@ module.exports = (robot) ->
 
     robot.hear /kindle_(.*)/i, (msg) ->
 
-        #******#
-        # 定数 #
-        #******#*
-        kanrisyadake = "管理者用のコマンドっす"
-        daihyoudake  = "代表専用( *´艸｀)"
-
+        #*************************************************************#
+        # 定数                                                        #
+        #*************************************************************#
         # kindle_testチャンネルのID
         room = "C25BV33L5"
 
@@ -19,6 +16,12 @@ module.exports = (robot) ->
 
         # Kindleメイン管理者
         mainAdmin = "takimotoh"
+
+        # 管理者以外時のメッセージ
+        kanrisyadake = "管理者用のコマンドっす"
+
+        # 購入許可者以外時のメッセージ
+        daihyoudake  = "代表専用( *´艸｀)"
 
         # helpコマンドメッセージ
         helpMsg = """
@@ -68,17 +71,17 @@ module.exports = (robot) ->
         管理者用help見たいなら、kindle_kanri
         """
 
-        #******#
-        # 変数 #
-        #******#
+        #*************************************************************#
+        # 変数                                                        #
+        #*************************************************************#
         command = msg.match[1]          # コマンド
         user = msg.message.user.name    # 発言者
-        res = ""                        # botの返答
+        res = "ERROR"                   # botの返答
         name = ""                       # 
 
-        #*****************************#
+        #=============================#
         # kindle_testチャンネルの場合 #
-        #*****************************#
+        #=============================#
         if room is msg.message.user.room
 
             # 内容により処理分岐
@@ -110,9 +113,6 @@ module.exports = (robot) ->
 
                 when "help"
                     res = helpMsg
-
-                when "kanri"
-                    res = kanriMsg
 
                 #--------------------#
                 # 田中さん用コマンド #
@@ -162,17 +162,23 @@ module.exports = (robot) ->
                         if name is msg.message.user.name
                             res = "名前を削除したよ(´・ω・`)"
 
+                when "kanri"
+                    res = kanrisyadake
+                    for name, index in adminMember
+                        if name is msg.message.user.name
+                            res = kanriMsg
+
                 #-------------#
                 # コマンド無し#
                 #-------------#
                 else
                     res = noCommand
 
-        #***********************************#
+        #===================================#
         # kindle_testチャンネルではない場合 #
-        #***********************************#
+        #===================================#
         else
-            res =  "#kindle_test チャンネルで言ってよ(´・ω・`)"
+            res = "#kindle_test チャンネルで言ってよ(´・ω・`)"
 
         #*********************#
         # botの返答メッセージ #
