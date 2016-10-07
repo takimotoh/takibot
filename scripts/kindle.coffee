@@ -1,85 +1,166 @@
 module.exports = (robot) ->
 
-  robot.hear /kindle_(.*)/i, (msg) ->
+    robot.hear /kindle_(.*)/i, (msg) ->
 
-    command = msg.match[1]          # コマンド
-    user = msg.message.user.name    # 発言者
-    res = ""                        # botの返答
-    message = ""                    # DM
-    userName = "takimotoh"
+        command = msg.match[1]          # コマンド
+        user = msg.message.user.name    # 発言者
+        res = ""                        # botの返答
+        flag = 0
+        kanrisyadake = "管理者用のコマンドっす"
+        daihyoudake = "代表専用( *´艸｀)"
 
-    #*****************************#
-    # kindle_testチャンネルの場合 #
-    #*****************************#
-    if "C25BV33L5" is msg.message.user.room
+        # 許可出せる人
+        eraihito = [ "tanakats", "aaaa" ]
 
-        # 内容により分岐
-        switch command
+        # Kindle管理者リスト
+        admin = [ "tanakats", "shinodai", "takimotoh" ]
 
-          #----------------#
-          # 社員用コマンド #
-          #----------------#
-          when "欲しい"
-            res = "申請したよ(´・ω・`)"
+        # Kindleメイン管理者
+        mainadmin = "takimotoh"
 
-          when "リスト"
-            res = "これが今ある本の一覧だよ(´・ω・`)"
+        #*****************************#
+        # kindle_testチャンネルの場合 #
+        #*****************************#
+        if "C25BV33L5" is msg.message.user.room
 
-          when "所持"
-            res = "@#{user} さんのレンタルリストだよ(´・ω・`)"
+            # 内容により分岐
+            switch command
 
-          when "貸して"
-            res = "@takimotoh  #{user}さんからリクエストだよ(´・ω・`)"
+                #----------------#
+                # 社員用コマンド #
+                #----------------#
+                when "欲しい"
+                    for erai, index in eraihito
+                        res = "@#{erai}さん、#{user}さんが本欲しいって(´・ω・`)"
+                        msg.send res
+                    res = @#{user} さん、申請の許可待ちだよ(´・ω・`)"
 
-          when "返す"
-#            res = """
-#            @#{user} さん、端末からその本消しておいてね(´・ω・`)"
-#            @takimotoh  #{user}さんが本返すって(´・ω・`)"
-#            """
-            res = "@#{user} さん、端末からその本消しておいてね(´・ω・`)"
-            
-            # 管理者にDM送信
-            message = "@takimotoh  #{user}さんが本返すって(´・ω・`)"
-            sendDM = (userName, message) ->
-              # userName は slack のユーザー名（@hoge の場合は "hoge"）
-              # slack の userID を取得
-              userId = robot.adapter.client.getUserByName(userName)?.id
-              return unless userId?
+                when "リスト"
+                    res = "これが今ある本の一覧だよ(´・ω・`)"
 
-              robot.adapter.client.openDM userId, (data) ->
-                robot.send {room: userName}, message
+                when "所持"
+                    res = "@#{user} さんのレンタルリストだよ(´・ω・`)"
 
+                when "貸して"
+                    res = "@#{mainadmin}  #{user}さんからリクエストだよ(´・ω・`)"
 
-          when "help"
-            res = "help？？('ω')"
+                when "返す"
+                    res = """
+                    @#{user} さん、端末からその本消しておいてね(´・ω・`)"
+                    @#{mainadmin}  #{user}さんが本返すって(´・ω・`)"
+                    """
 
-          #------------------#
-          # 管理者用コマンド #
-          #------------------#
-          when "貸す"
-            if "takimotoh" is msg.message.user.name
-              res = "@#{user} さん、配信したよ(´・ω・`)"
-            else
-              res = "Kindle管理者用のコマンドっす"
+                when "help"
+                    res = """
+                    ＜本を買って欲しい＞
+                        kindle_欲しい␣ASINコード
+                    ＜蔵書一覧を見たい＞
+                        kindle_リスト
+                    ＜自分の借りている本を見たい＞
+                        kindle_所持
+                    ＜本を貸して欲しい＞
+                        kindle_貸して␣蔵書一覧の管理番号
+                    ＜本を返したい＞
+                        端末より削除後、
+                        kindle_返す␣蔵書一覧の管理番号
+                    """
 
-          when "登録"
-            if "takimotoh" is msg.message.user.name
-              res = "本の情報を登録したよ(´・ω・`)"
-            else
-              res = "Kindle管理者用のコマンドっす"
+                when "kanri"
+                    res = """
+                    【エライ人用】
+                    ＜管理者に購入OKの指示＞
+                        kindle_ok␣ASINコード
+                    ＜管理者に購入NGの指示＞
+                        kindle_no␣ASINコード
 
-          # コマンド無し
-          else
-            res = "何したいのさ('ω')"
+                    【管理者用】
+                    ＜本を買った時＞
+                        kindle_買った␣ASINコード
+                    ＜本を配信する時＞
+                        kindle_配信␣貸して欲しい人␣蔵書一覧の管理番号
+                    ＜本を返してもらった時＞
+                        kindle_返却␣返却者␣蔵書一覧の管理番号
+                    ＜名前の登録＞
+                        kindle_入社␣slack名␣フルネーム
+                    ＜名前の削除＞
+                        kindle_退社␣slack名␣フルネーム
+                    """
 
-    #***********************************#
-    # kindle_testチャンネルではない場合 #
-    #***********************************#
-    else
-      res =  "#kindle_test チャンネルで言ってよ(´・ω・`)"
+                #--------------------#
+                # 田中さん用コマンド #
+                #--------------------#
+                when "ok"
+                    for name, index in eraihito
+                        if name is msg.message.user.name
+                            res = "@#{mainadmin}  本買っていいって(´・ω・`)"
+                            msg.send res
+                        else
+                            res = daihyoudake
 
-    #***********#
-    # botの返答 #
-    #***********#
-    msg.send res
+                when "no"
+                    for name, index in eraihito
+                        if name is msg.message.user.name
+                            res = "ダメだって(´・ω・`)"
+                            msg.send res
+                        else
+                            res = daihyoudake
+
+                #------------------#
+                # 管理者用コマンド #
+                #------------------#
+                when "買った"
+                    for name, index in admin
+                        if name is msg.message.user.name
+                            res = "本の情報を登録したよ(´・ω・`)"
+                   else
+                        res = kanrisyadake
+                
+                when "配信"
+                    for name, index in admin
+                        if name is msg.message.user.name
+                            res = "申請者さん、配信したよ(´・ω・`)"
+                   else
+                        res = kanrisyadake
+
+                when "返却"
+                    for name, index in admin
+                        if name is msg.message.user.name
+                            res = "返してもらったよ(´・ω・`)"
+                   else
+                        res = kanrisyadake
+
+                when "入社"
+                    for name, index in admin
+                        if name is msg.message.user.name
+                            res = "名前を登録したよ(´・ω・`)"
+                   else
+                        res = kanrisyadake
+
+                when "退社"
+                    for name, index in admin
+                        if name is msg.message.user.name
+                            res = "名前を削除したよ(´・ω・`)"
+                   else
+                        res = kanrisyadake
+
+                #-------------#
+                # コマンド無し#
+                #-------------#
+                else
+                    res = """
+                    何したいのさ('ω')
+                    help見たいなら、kindle_help
+                    管理者用help見たいなら、kindle_kanri
+                    """
+
+        #***********************************#
+        # kindle_testチャンネルではない場合 #
+        #***********************************#
+        else
+            res =  "#kindle_test チャンネルで言ってよ(´・ω・`)"
+
+        #############
+        # botの返答 #
+        #############
+        msg.send res
 
