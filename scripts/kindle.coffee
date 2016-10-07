@@ -1,5 +1,3 @@
-_ = require 'lodash'
-
 module.exports = (robot) ->
 
   robot.hear /kindleコメ/i, (msg) ->
