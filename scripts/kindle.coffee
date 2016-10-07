@@ -5,7 +5,8 @@ module.exports = (robot) ->
     command = msg.match[1]          # コマンド
     user = msg.message.user.name    # 発言者
     res = ""                        # botの返答
-    msg = ""                        # DM
+    message = ""                    # DM
+    userName = "takimotoh"
 
     #*****************************#
     # kindle_testチャンネルの場合 #
@@ -38,9 +39,16 @@ module.exports = (robot) ->
             res = "@#{user} さん、端末からその本消しておいてね(´・ω・`)"
             
             # 管理者にDM送信
-            msg = "@takimotoh  #{user}さんが本返すって(´・ω・`)"
-            robot.adapter.client.openDM userId, (data) ->
-              robot.send {room: takimotoh}, msg
+            message = "@takimotoh  #{user}さんが本返すって(´・ω・`)"
+            sendDM = (userName, message) ->
+              # userName は slack のユーザー名（@hoge の場合は "hoge"）
+              # slack の userID を取得
+              userId = robot.adapter.client.getUserByName(userName)?.id
+              return unless userId?
+
+              robot.adapter.client.openDM userId, (data) ->
+                robot.send {room: userName}, message
+
 
           when "help"
             res = "help？？('ω')"
