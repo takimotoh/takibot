@@ -10,7 +10,7 @@ module.exports = (robot) ->
         daihyoudake = "代表専用( *´艸｀)"
 
         # 許可出せる人
-        eraihito = [ "tanakats", "aaaa" ]
+        eraihito = [ "tanakats", "aaaaa" ]
 
         # Kindle管理者リスト
         admin = [ "tanakats", "shinodai", "takimotoh" ]
@@ -68,22 +68,22 @@ module.exports = (robot) ->
                 when "kanri"
                     res = """
                     【エライ人用】
-                    ＜管理者に購入OKの指示＞
-                        kindle_ok␣ASINコード
-                    ＜管理者に購入NGの指示＞
-                        kindle_no␣ASINコード
+                        ＜管理者に購入OKの指示＞
+                            kindle_ok␣ASINコード
+                        ＜管理者に購入NGの指示＞
+                            kindle_no␣ASINコード
 
                     【管理者用】
-                    ＜本を買った時＞
-                        kindle_買った␣ASINコード
-                    ＜本を配信する時＞
-                        kindle_配信␣貸して欲しい人␣蔵書一覧の管理番号
-                    ＜本を返してもらった時＞
-                        kindle_返却␣返却者␣蔵書一覧の管理番号
-                    ＜名前の登録＞
-                        kindle_入社␣slack名␣フルネーム
-                    ＜名前の削除＞
-                        kindle_退社␣slack名␣フルネーム
+                        ＜本を買った時＞
+                            kindle_買った␣ASINコード
+                        ＜本を配信する時＞
+                            kindle_配信␣貸して欲しい人␣蔵書一覧の管理番号
+                        ＜本を返してもらった時＞
+                            kindle_返却␣返却者␣蔵書一覧の管理番号
+                        ＜名前の登録＞
+                            kindle_入社␣slack名␣フルネーム
+                        ＜名前の削除＞
+                            kindle_退社␣slack名␣フルネーム
                     """
 
                 #--------------------#
