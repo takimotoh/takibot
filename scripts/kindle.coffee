@@ -220,7 +220,7 @@ module.exports = (robot) ->
                             if isNaN(testNo)
                             else
                                 switch testNo
-                                    when "1"
+                                    when 1
                                         name = msg.message.user.name
                                         id   = msg.message.user.id
                                         room = msg.message.user.room
