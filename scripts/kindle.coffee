@@ -85,11 +85,12 @@ module.exports = (robot) ->
         command = args1                       # コマンド
         user = msg.message.user.name          # 発言者
         res = "ERROR"                         # botの返答
-        eraiName = ""                         # エライ人の名前
+        adminName = ""                         # エライ人の名前
         ASIN = ""                             # ASINコード
         slackName = ""                        # slack名
         fullName = ""                         # フルネーム
         bookNo = ""                           # 蔵書管理番号
+        testNo = ""                           # TESTナンバー
 
         #=============================#
         # kindle_testチャンネルの場合 #
@@ -141,15 +142,15 @@ module.exports = (robot) ->
                 when "ok"
                     ASIN = args2
                     res = daihyoudake
-                    for eraiName, index in eraihito
-                        if eraiName is msg.message.user.name
+                    for adminName, index in eraihito
+                        if adminName is msg.message.user.name
                             res = "@#{mainAdmin}  #{ASIN}の本買っていいって(´・ω・`)"
 
                 when "no"
                     ASIN = args2
                     res = daihyoudake
-                    for eraiName, index in eraihito
-                        if eraiName is msg.message.user.name
+                    for adminName, index in eraihito
+                        if adminName is msg.message.user.name
                             res = "#{ASIN}の本は買っちゃダメだって(´・ω・`)"
 
                 #------------------#
@@ -158,8 +159,8 @@ module.exports = (robot) ->
                 when "買った"
                     ASIN = args2
                     res = kanrisyadake
-                    for eraiName, index in adminMember
-                        if eraiName is msg.message.user.name
+                    for adminName, index in adminMember
+                        if adminName is msg.message.user.name
                             res = "#{ASIN}の本の情報を登録したよ(´・ω・`)"
 
                 when "配信"
@@ -170,8 +171,8 @@ module.exports = (robot) ->
                     else
                         if "number" is typeof(bookNo)
                             res = kanrisyadake
-                            for eraiName, index in adminMember
-                                if eraiName is msg.message.user.name
+                            for adminName, index in adminMember
+                                if adminName is msg.message.user.name
                                     res = "@#{slackName} さん、#{bookNo}の本を配信したよ(´・ω・`)"
 
                 when "返却"
@@ -182,31 +183,50 @@ module.exports = (robot) ->
                     else
                         if "number" is typeof(bookNo)
                             res = kanrisyadake
-                            for eraiName, index in adminMember
-                                if eraiName is msg.message.user.name
+                            for adminName, index in adminMember
+                                if adminName is msg.message.user.name
                                     res = "蔵書管理番号#{bookNo}から#{slackName}さんは削除したよ(´・ω・`)"
 
                 when "入社"
                     slackName = args2
                     fullName = args3
                     res = kanrisyadake
-                    for eraiName, index in adminMember
-                        if eraiName is msg.message.user.name
+                    for adminName, index in adminMember
+                        if adminName is msg.message.user.name
                             res = "〈#{slackName}：#{fullName}〉さんを登録したよ(´・ω・`)"
 
                 when "退社"
                     slackName = args2
                     fullName = args3
                     res = kanrisyadake
-                    for eraiName, index in adminMember
-                        if eraiName is msg.message.user.name
+                    for adminName, index in adminMember
+                        if adminName is msg.message.user.name
                             res = "〈#{slackName}：#{fullName}〉さんを削除したよ(´・ω・`)"
 
                 when "kanri"
                     res = kanrisyadake
-                    for eraiName, index in adminMember
-                        if eraiName is msg.message.user.name
+                    for adminName, index in adminMember
+                        if adminName is msg.message.user.name
                             res = kanriMsg
+
+                #--------------#
+                # TESTコマンド #
+                #--------------#
+                when "test"
+                    res = kanrisyadake
+                    for adminName, index in adminMember
+                        if adminName is msg.message.user.name
+                            testNo = parseInt(args3, 10)
+                            if isNaN(testNo)
+                            else
+                                switch testNo
+                                    when 1
+                                        if "number" is typeof(bookNo)
+                                            res = """
+                                                  発言者Slack名：#{msg.message.user.name}
+                                                  発言者ID     ：#{msg.message.user.id}
+                                                  発言ルームID ：#{msg.message.user.room}
+                                                  """
 
                 #-------------#
                 # コマンド無し#
