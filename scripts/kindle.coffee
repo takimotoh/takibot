@@ -157,8 +157,8 @@ module.exports = (robot) ->
 
                 when "配信"
                     slackName = args2
-                    if "number" is typeof(args3)
-                        bookNo = parseInt(args3, 10)
+                    bookNo = parseInt(args3, 10)
+                    if "number" is typeof(bookNo)
                         res = kanrisyadake
                         for eraiName, index in adminMember
                             if eraiName is msg.message.user.name
