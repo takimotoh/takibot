@@ -24,7 +24,7 @@ module.exports = (robot) ->
         daihyoudake  = "代表専用( *´艸｀)"
 
         # 引数ミス時のメッセージ
-          = "代表専用( *´艸｀)"
+        hikisuError  = "コマンド間違ってるよ…"
 
         # helpコマンドメッセージ
         helpMsg = """
@@ -157,14 +157,14 @@ module.exports = (robot) ->
 
                 when "配信"
                     slackName = args2
-                    bookNo = parseInt(args3, 10)
-                    if number is bookNo
+                    if "number" is typeof(args3)
+                        bookNo = parseInt(args3, 10)
                         res = kanrisyadake
                         for eraiName, index in adminMember
                             if eraiName is msg.message.user.name
                                 res = "@#{slackName} さん、#{bookNo}の本を配信したよ(´・ω・`)"
                     else
-                        res = 
+                        res = hikisuError
 
                 when "返却"
                     slackName = args2
