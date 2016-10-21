@@ -64,8 +64,15 @@ module.exports = (robot) ->
                            kindle_入社、slack名、フルネーム
                        ＜名前の削除＞
                            kindle_退社、slack名、フルネーム
-                    \`\`\`
-                    """
+                   \`\`\`
+                   """
+
+        # testコマンドメッセージ
+        testMsg = """
+                   \`\`\`
+                   1:発言者名、発言者ID、発言ルームIDを表示
+                   \`\`\`
+                   """
 
         # コマンド無し時メッセージ
         noCommand = """
@@ -227,6 +234,8 @@ module.exports = (robot) ->
                                           発言者ID         ：#{id}
                                           発言ルームID ：#{room}
                                           """
+                                when "help"
+                                    res = testMsg
                                 else
                                     res = "TESTナンバー指定無し('ω')"
 
