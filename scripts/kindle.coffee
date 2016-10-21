@@ -23,6 +23,9 @@ module.exports = (robot) ->
         # 購入許可者以外時のメッセージ
         daihyoudake  = "代表専用( *´艸｀)"
 
+        # 引数ミス時のメッセージ
+          = "代表専用( *´艸｀)"
+
         # helpコマンドメッセージ
         helpMsg = """
                   \`\`\`
@@ -154,15 +157,18 @@ module.exports = (robot) ->
 
                 when "配信"
                     slackName = args2
-                    bookNo = args3
-                    res = kanrisyadake
-                    for eraiName, index in adminMember
-                        if eraiName is msg.message.user.name
-                            res = "@#{slackName} さん、#{bookNo}の本を配信したよ(´・ω・`)"
+                    bookNo = parseInt(args3, 10)
+                    if number is bookNo
+                        res = kanrisyadake
+                        for eraiName, index in adminMember
+                            if eraiName is msg.message.user.name
+                                res = "@#{slackName} さん、#{bookNo}の本を配信したよ(´・ω・`)"
+                    else
+                        res = 
 
                 when "返却"
                     slackName = args2
-                    bookNo = args3
+                    bookNo = parseInt(args3, 10)
                     res = kanrisyadake
                     for eraiName, index in adminMember
                         if eraiName is msg.message.user.name
