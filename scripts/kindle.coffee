@@ -192,7 +192,7 @@ module.exports = (robot) ->
                     res = kanrisyadake
                     for eraiName, index in adminMember
                         if eraiName is msg.message.user.name
-                            res = "OK! #{slackName}さんは#{fullName}で登録したよ(´・ω・`)"
+                            res = "OK! <#{slackName}]:[#{fullName}>さんを登録したよ(´・ω・`)"
 
                 when "退社"
                     slackName = args2
