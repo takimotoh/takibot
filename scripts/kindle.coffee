@@ -216,7 +216,7 @@ module.exports = (robot) ->
                     res = kanrisyadake
                     for adminName, index in adminMember
                         if adminName is msg.message.user.name
-                            testNo = parseInt(args3, 10)
+                            testNo = parseInt(args2, 10)
                             if isNaN(testNo)
                             else
                                 switch testNo
