@@ -224,7 +224,7 @@ module.exports = (robot) ->
                                     room = msg.message.user.room
                                     res = """
                                           発言者Slack名：#{name}
-                                          発言者ID     ：#{id}
+                                          発言者ID       ：#{id}
                                           発言ルームID ：#{room}
                                           """
                                 else
