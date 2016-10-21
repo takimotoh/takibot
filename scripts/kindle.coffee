@@ -228,7 +228,7 @@ module.exports = (robot) ->
                                           発言ルームID ：#{room}
                                           """
                                 else
-                                    res = "TEST №指定無し('ω')"
+                                    res = "TESTナンバー指定無し('ω')"
 
                 #-------------#
                 # コマンド無し#
