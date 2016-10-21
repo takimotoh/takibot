@@ -216,21 +216,19 @@ module.exports = (robot) ->
                     res = kanrisyadake
                     for adminName, index in adminMember
                         if adminName is msg.message.user.name
-                            testNo = parseInt(args2, 10)
-                            if isNaN(testNo)
-                            else
-                                switch testNo
-                                    when 1
-                                        name = msg.message.user.name
-                                        id   = msg.message.user.id
-                                        room = msg.message.user.room
-                                        res = """
-                                              発言者Slack名：#{name}
-                                              発言者ID     ：#{id}
-                                              発言ルームID ：#{room}
-                                              """
-                                    else
-                                        res = "コマンド指定無し('ω')"
+                            testNo = args2
+                            switch testNo
+                                when "1"
+                                    name = msg.message.user.name
+                                    id   = msg.message.user.id
+                                    room = msg.message.user.room
+                                    res = """
+                                          発言者Slack名：#{name}
+                                          発言者ID     ：#{id}
+                                          発言ルームID ：#{room}
+                                          """
+                                else
+                                    res = "コマンド指定無し('ω')"
 
                 #-------------#
                 # コマンド無し#
