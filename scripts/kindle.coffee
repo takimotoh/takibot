@@ -220,7 +220,7 @@ module.exports = (robot) ->
                             if isNaN(testNo)
                             else
                                 switch testNo
-                                    when 1
+                                    when "1"
                                         res = """
                                               発言者Slack名：#{msg.message.user.name}
                                               発言者ID     ：#{msg.message.user.id}
