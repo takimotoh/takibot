@@ -156,15 +156,17 @@ module.exports = (robot) ->
                             res = "#{ASIN}の本の情報を登録したよ(´・ω・`)"
 
                 when "配信"
+                    res = hikisuError
                     slackName = args2
                     bookNo = parseInt(args3, 10)
-                    if "number" is typeof(bookNo)
-                        res = kanrisyadake
-                        for eraiName, index in adminMember
-                            if eraiName is msg.message.user.name
-                                res = "@#{slackName} さん、#{bookNo}の本を配信したよ(´・ω・`)"
+                    if isNaN(bookNo)
+
                     else
-                        res = hikisuError
+                        if "number" is typeof(bookNo)
+                            res = kanrisyadake
+                            for eraiName, index in adminMember
+                                if eraiName is msg.message.user.name
+                                    res = "@#{slackName} さん、#{bookNo}の本を配信したよ(´・ω・`)"
 
                 when "返却"
                     slackName = args2
