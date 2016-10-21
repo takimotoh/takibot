@@ -221,12 +221,11 @@ module.exports = (robot) ->
                             else
                                 switch testNo
                                     when 1
-                                        if "number" is typeof(bookNo)
-                                            res = """
-                                                  発言者Slack名：#{msg.message.user.name}
-                                                  発言者ID     ：#{msg.message.user.id}
-                                                  発言ルームID ：#{msg.message.user.room}
-                                                  """
+                                        res = """
+                                              発言者Slack名：#{msg.message.user.name}
+                                              発言者ID     ：#{msg.message.user.id}
+                                              発言ルームID ：#{msg.message.user.room}
+                                              """
 
                 #-------------#
                 # コマンド無し#
