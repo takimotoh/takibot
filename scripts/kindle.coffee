@@ -82,7 +82,11 @@ module.exports = (robot) ->
         command = args1                       # コマンド
         user = msg.message.user.name          # 発言者
         res = "ERROR"                         # botの返答
-        name = ""                             # 
+        eraiName = ""                         # エライ人の名前
+        ASIN = ""                             # ASINコード
+        slackName = ""                        # slack名
+        fullName = ""                         # フルネーム
+        bookNo = ""                           # 蔵書管理番号
 
         #=============================#
         # kindle_testチャンネルの場合 #
@@ -96,8 +100,9 @@ module.exports = (robot) ->
                 # 共通コマンド #
                 #--------------#
                 when "欲しい"
+                    ASIN = args2
                     for erai, index in eraihito
-                        res = "@#{erai}さん、#{user}さんが#{args2}の本欲しいって(´・ω・`)"
+                        res = "@#{erai}さん、#{user}さんが#{ASIN}の本欲しいって(´・ω・`)"
                         msg.send res
                     res = "@#{user} さん、申請の許可待ちだよ(´・ω・`)"
 
@@ -111,9 +116,10 @@ module.exports = (robot) ->
                     res = "@#{mainAdmin}  #{user}「#{args2}の本、かーしーて(´・ω・`)」"
 
                 when "返す"
+                    ASIN = args2
                     res = """
                     @#{user} さん、端末からその本消しておいてね(´・ω・`)"
-                    @#{mainAdmin}  #{user}さんが#{args2}の本返すって(´・ω・`)"
+                    @#{mainAdmin}  #{user}さんが#{ASIN}の本返すって(´・ω・`)"
                     """
 
                 when "help"
@@ -123,54 +129,65 @@ module.exports = (robot) ->
                 # 田中さん用コマンド #
                 #--------------------#
                 when "ok"
+                    ASIN = args2
                     res = daihyoudake
-                    for name, index in eraihito
-                        if name is msg.message.user.name
-                            res = "@#{mainAdmin}  #{args2}の本買っていいって(´・ω・`)"
+                    for eraiName, index in eraihito
+                        if eraiName is msg.message.user.name
+                            res = "@#{mainAdmin}  #{ASIN}の本買っていいって(´・ω・`)"
 
                 when "no"
+                    ASIN = args2
                     res = daihyoudake
-                    for name, index in eraihito
-                        if name is msg.message.user.name
-                            res = "#{args2}の本は買っちゃダメだって(´・ω・`)"
+                    for eraiName, index in eraihito
+                        if eraiName is msg.message.user.name
+                            res = "#{ASIN}の本は買っちゃダメだって(´・ω・`)"
 
                 #------------------#
                 # 管理者用コマンド #
                 #------------------#
                 when "買った"
+                    ASIN = args2
                     res = kanrisyadake
-                    for name, index in adminMember
-                        if name is msg.message.user.name
-                            res = "#{args2}の本の情報を登録したよ(´・ω・`)"
+                    for eraiName, index in adminMember
+                        if eraiName is msg.message.user.name
+                            res = "#{ASIN}の本の情報を登録したよ(´・ω・`)"
 
                 when "配信"
+                    slackName = args2
+                    bookNo = args3
                     res = kanrisyadake
-                    for name, index in adminMember
-                        if name is msg.message.user.name
-                            res = "@#{args2} さん、#{args3}の本を配信したよ(´・ω・`)"
+                    for eraiName, index in adminMember
+                        if eraiName is msg.message.user.name
+                            res = "@#{slackName} さん、#{bookNo}の本を配信したよ(´・ω・`)"
 
                 when "返却"
+                    slackName = args2
+                    bookNo = args3
                     res = kanrisyadake
-                    for name, index in adminMember
-                        if name is msg.message.user.name
-                            res = "#{args3}の本の貸し出しリストから#{args2}さんは削除したよ(´・ω・`)"
+                    for eraiName, index in adminMember
+                        if eraiName is msg.message.user.name
+                            res = "蔵書管理番号#{bookNo}から#{slackName}さんは削除したよ(´・ω・`)"
 
                 when "入社"
+                    slackName = args2
+                    fullName = args3
                     res = kanrisyadake
-                    for name, index in adminMember
-                        if name is msg.message.user.name
-                            res = "OK! #{args2}さんは#{args3}で登録したよ(´・ω・`)"
+                    for eraiName, index in adminMember
+                        if eraiName is msg.message.user.name
+                            res = "OK! #{slackName}さんは#{fullName}で登録したよ(´・ω・`)"
 
                 when "退社"
+                    slackName = args2
+                    fullName = args3
                     res = kanrisyadake
-                    for name, index in adminMember
-                        if name is msg.message.user.name
-                            res = "〈#{args2}：#{args3}〉さんを削除したよ(´・ω・`)"
+                    for eraiName, index in adminMember
+                        if eraiName is msg.message.user.name
+                            res = "〈#{slackName}：#{fullName}〉さんを削除したよ(´・ω・`)"
 
                 when "kanri"
                     res = kanrisyadake
-                    for name, index in adminMember
-                        if name is msg.message.user.name
+                    for eraiName, index in adminMember
+                        if eraiName is msg.message.user.name
                             res = kanriMsg
 
                 #-------------#
