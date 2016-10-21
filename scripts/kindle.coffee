@@ -116,14 +116,21 @@ module.exports = (robot) ->
                     res = "@#{user} さんのレンタルリストだよ(´・ω・`)"
 
                 when "貸して"
-                    res = "@#{mainAdmin}  #{user}「#{args2}の本、かーしーて(´・ω・`)」"
+                    res = hikisuError
+                    bookNo = parseInt(args2, 10)
+                    if isNaN(bookNo)
+                    else
+                        res = "@#{mainAdmin}  #{user}「蔵書番号#{bookNo}を、かーしーて(´・ω・`)」"
 
                 when "返す"
-                    ASIN = args2
-                    res = """
-                    @#{user} さん、端末からその本消しておいてね(´・ω・`)"
-                    @#{mainAdmin}  #{user}さんが#{ASIN}の本返すって(´・ω・`)"
-                    """
+                    res = hikisuError
+                    bookNo = parseInt(args2, 10)
+                    if isNaN(bookNo)
+                    else
+                        res = """
+                        @#{user} さん、端末からその本消しておいてね(´・ω・`)"
+                        @#{mainAdmin}  #{user}「蔵書番号#{bookNo}を返すー(´・ω・`)」"
+                        """
 
                 when "help"
                     res = helpMsg
@@ -160,7 +167,6 @@ module.exports = (robot) ->
                     slackName = args2
                     bookNo = parseInt(args3, 10)
                     if isNaN(bookNo)
-
                     else
                         if "number" is typeof(bookNo)
                             res = kanrisyadake
@@ -169,12 +175,16 @@ module.exports = (robot) ->
                                     res = "@#{slackName} さん、#{bookNo}の本を配信したよ(´・ω・`)"
 
                 when "返却"
+                    res = hikisuError
                     slackName = args2
                     bookNo = parseInt(args3, 10)
-                    res = kanrisyadake
-                    for eraiName, index in adminMember
-                        if eraiName is msg.message.user.name
-                            res = "蔵書管理番号#{bookNo}から#{slackName}さんは削除したよ(´・ω・`)"
+                    if isNaN(bookNo)
+                    else
+                        if "number" is typeof(bookNo)
+                            res = kanrisyadake
+                            for eraiName, index in adminMember
+                                if eraiName is msg.message.user.name
+                                    res = "蔵書管理番号#{bookNo}から#{slackName}さんは削除したよ(´・ω・`)"
 
                 when "入社"
                     slackName = args2
