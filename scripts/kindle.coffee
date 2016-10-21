@@ -221,11 +221,16 @@ module.exports = (robot) ->
                             else
                                 switch testNo
                                     when "1"
+                                        name = msg.message.user.name
+                                        id   = msg.message.user.id
+                                        room = msg.message.user.room
                                         res = """
-                                              発言者Slack名：#{msg.message.user.name}
-                                              発言者ID     ：#{msg.message.user.id}
-                                              発言ルームID ：#{msg.message.user.room}
+                                              発言者Slack名：#{name}
+                                              発言者ID     ：#{id}
+                                              発言ルームID ：#{room}
                                               """
+                                    else
+                                        res = "コマンド指定無し('ω')"
 
                 #-------------#
                 # コマンド無し#
