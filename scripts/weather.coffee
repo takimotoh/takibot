@@ -14,5 +14,9 @@ module.exports = (robot) ->
     .get()
     request (err, res, body) ->
       json = JSON.parse body
-      if day == 3 then forecast = 'わからんよ' else forecast = json['forecasts'][day]['telop']
+      if day == 3 then
+        forecast = 'わからんよ'
+      else
+        forecast = json['forecasts'][day]['telop']
+
       msg.reply forecast
