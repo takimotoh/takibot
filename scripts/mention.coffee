@@ -4,7 +4,7 @@ module.exports = (robot) ->
 
     user = msg.message.user.name              # 発言者
     destination = msg.match[1].split([/\s\n\r/])[0]  # 発進先
-    message = msg.match[1].split(" ")[1]      # メッセージ
+    message = msg.match[1].split([/\s\n\r/])[1]      # メッセージ
 
     #********#
     # 送信先 #
