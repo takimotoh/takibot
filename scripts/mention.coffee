@@ -9,7 +9,7 @@ module.exports = (robot) ->
     #********#
     # 送信先 #
     #********#
-    switch user
+    switch destination
 
         when "ダイナマイト"
             mention = "oyamat"
