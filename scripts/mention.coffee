@@ -38,12 +38,12 @@ module.exports = (robot) ->
     #
     #   when "羽田", "羽田さん", "尚美さん"
     #     mention = "akaiwan"
-    #
-    #   when "金井", "金井さん", "金井くん", "金ちゃん", "孝ちゃん"
-    #     mention = "kanait"
-    #
-    #   when "渡邊", "渡邊さん", "なべひろさん", "ナベヒロさん"
-    #     mention = "watanabeh"
+
+      when "金井", "金井さん", "金井くん", "金ちゃん", "孝ちゃん"
+        mention = "kanait"
+
+      when "渡邊", "渡邊さん", "なべひろさん", "ナベヒロさん"
+        mention = "watanabeh"
 
       when "たなめぐ", "たなめぐさん", "タナメグ", "タナメグさん", "恵さん", "めぐめぐ"
         mention = "tanakam"
