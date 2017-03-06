@@ -1,10 +1,19 @@
 module.exports = (robot) ->
 
-  robot.hear /@(.*)/i, (msg) ->
+  robot.hear /＠(.*)/i, (msg) ->
 
     user = msg.message.user.name              # 発言者
     destination = msg.match[1].split(" ")[1]  # 発進先
     message = msg.match[1].split(" ")[2]      # メッセージ
+
+    sendMessage = user
+    msg.send sendMessage
+    sendMessage = destination
+    msg.send sendMessage
+    sendMessage = message
+    msg.send sendMessage
+
+    return
 
     #********#
     # 送信先 #
