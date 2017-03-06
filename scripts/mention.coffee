@@ -3,8 +3,8 @@ module.exports = (robot) ->
   robot.hear /＠(.*)/i, (msg) ->
 
     user = msg.message.user.name              # 発言者
-    destination = msg.match[1].split(/\s|\n|\r])[0]  # 発進先
-    message = msg.match[1].split([\s|\n|\r])[1]      # メッセージ
+    destination = msg.match[1].split(\s])[0]  # 発進先
+    message = msg.match[1].split(\s)[1]      # メッセージ
 
     #********#
     # 送信先 #
