@@ -19,6 +19,8 @@ module.exports = (robot) ->
 
         else
             message = "@#{user} 誰宛やそれ"
+            msg.send message
+            return
 
     #************#
     # メッセージ #
