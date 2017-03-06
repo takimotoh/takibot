@@ -61,7 +61,8 @@ module.exports = (robot) ->
         # when "渡邉", "渡邉さん", "渡邉くん", "俊ちゃん", "しゅんちゃん"
         #     mention = "watanabes"
         #
-        when "樋津", "樋津さん", "淳二", "淳二さん", "稲川淳二"
+        # when "樋津", "樋津さん", "淳二", "淳二さん", "稲川淳二"
+        when "樋津"
             mention = "hitsut"
 
         else
