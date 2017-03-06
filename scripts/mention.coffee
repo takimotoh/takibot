@@ -20,12 +20,12 @@ module.exports = (robot) ->
     #
     #   when "滝本", "滝本さん", "タッキー", "たっきー", "tk"
     #     mention = "takimotoh"
-    #
-    #   when "大滝", "大滝さん", "大滝くん", "中滝", "中滝さん", "中滝くん", "小滝", "小滝さん", "小滝くん",
-    #     mention = "ohtakis"
-    #
-    #   when "篠田", "篠田さん", "いっくん", "いくちゃん", "シノディー", "しのでぃー"
-    #     mention = "shinodai"
+
+      when "大滝", "大滝さん", "大滝くん", "中滝", "中滝さん", "中滝くん", "小滝", "小滝さん", "小滝くん",
+        mention = "ohtakis"
+
+      when "篠田", "篠田さん", "いっくん", "いくちゃん", "シノディー", "しのでぃー"
+        mention = "shinodai"
 
       when "根本", "根本さん", "ネモティー"
         mention = "nemotot"
