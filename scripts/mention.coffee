@@ -8,10 +8,10 @@ module.exports = (robot) ->
 
             sendMessage = user
             msg.send sendMessage
-            sendMessage = destination
-            msg.send sendMessage
-            sendMessage = message
-            msg.send sendMessage
+            # sendMessage = destination
+            # msg.send sendMessage
+            # sendMessage = message
+            # msg.send sendMessage
 
     #********#
     # 送信先 #
@@ -32,7 +32,7 @@ module.exports = (robot) ->
     #************#
     # メッセージ #
     #************#
-    sendMessage = "@#{mention} #{message}"
+    sendMessage = "@#{mention}\n#{message}"
 
     #*********************#
     # botの返答メッセージ #
