@@ -10,8 +10,8 @@ module.exports = (robot) ->
     #********#
     # 送信先 #
     #********#
-    # switch destination
-    #
+    switch destination
+
     #   when "寿さん", "寿", "代表", "社長", "シャッチョさん"
     #     mention = "tanakats"
     #
@@ -57,13 +57,13 @@ module.exports = (robot) ->
     #   when "渡邉", "渡邉さん", "渡邉くん", "俊ちゃん", "しゅんちゃん"
     #     mention = "watanabes"
     #
-    #   when "樋津", "樋津さん", "淳二", "淳二さん", "稲川淳二"
-    #     mention = "hitsut"
-    #
-    #   else
-    #     sendMessage = "@#{user} 誰宛やそれ"
-    #     msg.send sendMessage
-    #     return
+      when "樋津", "樋津さん", "淳二", "淳二さん", "稲川淳二"
+        mention = "hitsut"
+
+      else
+        sendMessage = "@#{user} 誰宛やそれ"
+        msg.send sendMessage
+        return
 
     #****************#
     # メッセージ送信 #
