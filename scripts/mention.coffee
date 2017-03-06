@@ -6,7 +6,7 @@ module.exports = (robot) ->
     destination = msg.match[1].split(/\n|\r\n|\s/)[0]  # 発進先
     message = msg.match[1].split(/\n|\r\n|\s/)[1]      # メッセージ
 
-    if ( typeof(message) == undefined ) {
+    if ( typeof(message) == "undefined" ) {
         sendMessage = "@#{user} 改行した？"
         msg.send sendMessage
         return
