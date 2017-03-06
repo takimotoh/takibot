@@ -12,16 +12,16 @@ module.exports = (robot) ->
     #********#
     switch destination
 
-    #   when "寿さん", "寿", "代表", "社長", "シャッチョさん"
-    #     mention = "tanakats"
-    #
-    #   when "牛木さん", "キット", "キットさん", "kit", "kitさん", "牛キット", "牛キットさん"
-    #     mention = "ushikit"
-    #
-    #   when "滝本", "滝本さん", "タッキー", "たっきー", "tk"
-    #     mention = "takimotoh"
+      when "寿さん", "寿", "代表", "社長", "シャッチョさん"
+        mention = "tanakats"
 
-      when "大滝", "大滝さん", "大滝くん", "中滝", "中滝さん", "中滝くん", "小滝", "小滝さん", "小滝くん",
+      when "牛木さん", "キット", "キットさん", "kit", "kitさん", "牛キット", "牛キットさん"
+        mention = "ushikit"
+
+      when "滝本", "滝本さん", "タッキー", "たっきー", "tk"
+        mention = "takimotoh"
+
+      when "大滝", "大滝さん", "大滝くん", "中滝", "中滝さん", "中滝くん", "小滝", "小滝さん", "小滝くん"
         mention = "ohtakis"
 
       when "篠田", "篠田さん", "いっくん", "いくちゃん", "シノディー", "しのでぃー"
