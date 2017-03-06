@@ -4,7 +4,7 @@ module.exports = (robot) ->
 
     user = msg.message.user.name              # 発言者
     destination = msg.match[1].split(" ")[1]  # 発進先
-    message = msg.match[2]                    # メッセージ
+    message = msg.match[1].split(" ")[2]      # メッセージ
 
     #********#
     # 送信先 #
@@ -18,8 +18,8 @@ module.exports = (robot) ->
             mention = "takimotoh"
 
         else
-            message = "@#{user} 誰宛やそれ"
-            msg.send message
+            sendMessage = "@#{user} 誰宛やそれ"
+            msg.send sendMessage
             return
 
     #************#
