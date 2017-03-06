@@ -6,11 +6,11 @@ module.exports = (robot) ->
     destination = msg.match[1].split(" ")[0]  # 発進先
     message = msg.match[1].split(" ")[1]      # メッセージ
 
-    sendMessage = "msg.message.user.name" & user
+    sendMessage = "msg.message.user.name = #{user}"
     msg.send sendMessage
-    sendMessage = "msg.match[1].split(" ")[0]" & destination
+    sendMessage = "msg.match[1].split(\" \")[0] = #{destination}"
     msg.send sendMessage
-    sendMessage = "msg.match[1].split(" ")[1]" & message
+    sendMessage = "msg.match[1].split(\" \")[1] = #{message}"
     msg.send sendMessage
 
     return
