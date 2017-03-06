@@ -16,11 +16,11 @@ module.exports = (robot) ->
     #********#
     switch destination
 
-        when "寿さん", "寿", "代表", "社長", "シャッチョさん"
-            mention = "tanakats"
+      when "寿さん", "寿", "代表", "社長", "シャッチョさん"
+        mention = "tanakats"
 
-        when "牛木さん", "キット", "キットさん", "kit", "kitさん", "牛キット", "牛キットさん"
-            mention = "ushikit"
+      when "牛木さん", "キット", "キットさん", "kit", "kitさん", "牛キット", "牛キットさん"
+        mention = "ushikit"
 
         # when "滝本", "滝本さん", "タッキー", "たっきー", "tk"
         #     mention = "takimotoh"
@@ -64,10 +64,10 @@ module.exports = (robot) ->
         # when "樋津", "樋津さん", "淳二", "淳二さん", "稲川淳二"
             # mention = "hitsut"
 
-        else
-            sendMessage = "@#{user} 誰宛やそれ"
-            msg.send sendMessage
-            return
+      else
+        sendMessage = "@#{user} 誰宛やそれ"
+        msg.send sendMessage
+        return
 
     #****************#
     # メッセージ送信 #
