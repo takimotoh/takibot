@@ -73,12 +73,13 @@ module.exports = (robot) ->
     # メッセージ送信 #
     #****************#
     if mention is "ohtakis"
-        sendMessage = """
-                      ＿人人人人人人＿
-                      ＞　@ohtakis　＜
-                      ￣Y^Y^Y^Y^Y^Y^￣
-                      #{message}
-                      """
+      sendMessage = """
+                    ＿人人人人人人＿
+                    ＞　@ohtakis　＜
+                    ￣Y^Y^Y^Y^Y^Y^￣
+                    #{message}
+                    """
+    else
+      sendMessage = "@#{mention} from:#{user}\n#{message}"
 
-    sendMessage = "@#{mention} from:#{user}\n#{message}"
     msg.send sendMessage
