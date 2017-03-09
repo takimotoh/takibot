@@ -80,7 +80,8 @@ module.exports = (robot) ->
     #   when "樋津", "樋津さん", "淳二", "淳二さん", "稲川淳二"
     #   mention = "hitsut"
 
-    when
+    when "滝本"
+        mention = "takimotoh"
 
     # 指定外
     else
