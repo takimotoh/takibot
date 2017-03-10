@@ -106,13 +106,16 @@ module.exports = (robot) ->
     request (err, res, body) ->
       json = JSON.parse body
 
-      msg.send json['publicTime']
+      time = json['publicTime'].replace(/[T]/g, " ")
+      time = time.replace(/[T]/g, " ")
+
+      msg.send time
 
       if area == 1
         res = '?'
       else
         res = """
-              #{json['publicTime']} 発表
+              #{time} 発表
               #{json['title']}
 
               #{json['forecasts'][0]['dateLabel']} #{json['forecasts'][0]['date']}
