@@ -106,7 +106,7 @@ module.exports = (robot) ->
     request (err, res, body) ->
       json = JSON.parse body
 
-      msg.send json
+      msg.send json['publicTime']
 
       if area == 1
         res = '?'
