@@ -109,7 +109,7 @@ module.exports = (robot) ->
 
       time = json['publicTime'].replace(/[T]/g, " ")
       time = time[0..15] + "発表"
-      title = son['title']
+      title = json['title']
       dateLabel1 = json['forecasts'][0]['dateLabel']
       dateLabel2 = json['forecasts'][1]['dateLabel']
       dateLabel3 = json['forecasts'][2]['dateLabel']
@@ -131,7 +131,6 @@ module.exports = (robot) ->
             title
             #{dateLabel1} #{day1}
               #{telop1} #{max1} #{min1}
-            #{dateLabel2} #{day2}
               #{telop2} #{max2} #{min2}
             #{dateLabel3} #{day3}
               #{telop3} #{max3} #{min3}
