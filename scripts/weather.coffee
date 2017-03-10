@@ -96,10 +96,11 @@ module.exports = (robot) ->
       when "沖縄"
         area = "471010"
       else
-        area = 1
+        res = '?'
+        msg.send res
+        return
 
     pos = "http://weather.livedoor.com/forecast/webservice/json/v1?city=" + area
-
     request = msg.http(pos)
     .get()
 
@@ -107,7 +108,7 @@ module.exports = (robot) ->
       json = JSON.parse body
 
       time = json['publicTime'].replace(/[T]/g, " ")
-      time = time.replace(/[T]/g, " ")
+      time = time.replace(/"+0900"/g, "")
 
       msg.send time
 
