@@ -107,42 +107,42 @@ module.exports = (robot) ->
     request (err, res, body) ->
       json = JSON.parse body
 
-      time = json['publicTime'].replace(/[T]/g, " ")
-      time = time[0..15]
-      time = time + "発表"
-      msg.send time
-      title = json['title']
-      msg.send title
-      dateLabel1 = json['forecasts'][0]['dateLabel']
-      msg.send dateLabel1
-      dateLabel2 = json['forecasts'][1]['dateLabel']
-      msg.send dateLabel2
-      dateLabel3 = json['forecasts'][2]['dateLabel']
-      msg.send dateLabel3
+      # time = json['publicTime'].replace(/[T]/g, " ")
+      # time = time[0..15]
+      # time = time + "発表"
+      # msg.send time
+      # title = json['title']
+      # msg.send title
+      # dateLabel1 = json['forecasts'][0]['dateLabel']
+      # msg.send dateLabel1
+      # dateLabel2 = json['forecasts'][1]['dateLabel']
+      # msg.send dateLabel2
+      # dateLabel3 = json['forecasts'][2]['dateLabel']
+      # msg.send dateLabel3
       day1 = "(" + json['forecasts'][0]['date'] + ")"
       msg.send day1
       day2 = "(" + json['forecasts'][1]['date'] + ")"
       msg.send day2
       day3 = "(" + json['forecasts'][2]['date'] + ")"
       msg.send day3
-      telop1 = json['forecasts'][0]['telop']
-      msg.send telop1
-      telop2 = json['forecasts'][1]['telop']
-      msg.send telop2
-      telop3 = json['forecasts'][2]['telop']
-      msg.send telop3
-      max1 = "最高:" + json['forecasts'][0]['temperature']['max']['celsius']
-      msg.send max1
-      max2 = "最高:" + json['forecasts'][1]['temperature']['max']['celsius']
-      msg.send max2
-      max3 = "最高:" + json['forecasts'][2]['temperature']['max']['celsius']
-      msg.send max3
-      min1 = "最低:" + json['forecasts'][0]['temperature']['min']['celsius']
-      msg.send min1
-      min2 = "最低:" + json['forecasts'][1]['temperature']['min']['celsius']
-      msg.send min2
-      min3 = "最低:" + json['forecasts'][2]['temperature']['min']['celsius']
-      msg.send min3
+      # telop1 = json['forecasts'][0]['telop']
+      # msg.send telop1
+      # telop2 = json['forecasts'][1]['telop']
+      # msg.send telop2
+      # telop3 = json['forecasts'][2]['telop']
+      # msg.send telop3
+      # max1 = "最高:" + json['forecasts'][0]['temperature']['max']['celsius']
+      # msg.send max1
+      # max2 = "最高:" + json['forecasts'][1]['temperature']['max']['celsius']
+      # msg.send max2
+      # max3 = "最高:" + json['forecasts'][2]['temperature']['max']['celsius']
+      # msg.send max3
+      # min1 = "最低:" + json['forecasts'][0]['temperature']['min']['celsius']
+      # msg.send min1
+      # min2 = "最低:" + json['forecasts'][1]['temperature']['min']['celsius']
+      # msg.send min2
+      # min3 = "最低:" + json['forecasts'][2]['temperature']['min']['celsius']
+      # msg.send min3
 
       res = """
             time
