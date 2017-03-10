@@ -108,7 +108,8 @@ module.exports = (robot) ->
       json = JSON.parse body
 
       time = json['publicTime'].replace(/[T]/g, " ")
-      time = time[0..15] + "発表"
+      time = time[0..15]
+      time = time + "発表"
       title = json['title']
       dateLabel1 = json['forecasts'][0]['dateLabel']
       dateLabel2 = json['forecasts'][1]['dateLabel']
