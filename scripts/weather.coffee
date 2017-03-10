@@ -108,25 +108,22 @@ module.exports = (robot) ->
       json = JSON.parse body
 
       time = json['publicTime'].replace(/[T]/g, " ")
-      time = time.replace(/"+0900"/g, "")
+      time = time.replace(/"\+0900"/g, "")
 
       msg.send time
 
-      if area == 1
-        res = '?'
-      else
-        res = """
-              #{time} 発表
-              #{json['title']}
+      res = """
+            #{time} 発表
+            #{json['title']}
 
-              #{json['forecasts'][0]['dateLabel']} #{json['forecasts'][0]['date']}
-              #{json['forecasts'][0]['telop']} 最高:#{json['forecasts'][0]['max']['celsius']} 最低:#{json['forecasts'][0]['min']['celsius']}
+            #{json['forecasts'][0]['dateLabel']} #{json['forecasts'][0]['date']}
+            #{json['forecasts'][0]['telop']} 最高:#{json['forecasts'][0]['max']['celsius']} 最低:#{json['forecasts'][0]['min']['celsius']}
 
-              #{json['forecasts'][1]['dateLabel']} #{json['forecasts'][1]['date']}
-              #{json['forecasts'][1]['telop']} 最高:#{json['forecasts'][1]['max']['celsius']} 最低:#{json['forecasts'][1]['min']['celsius']}
+            #{json['forecasts'][1]['dateLabel']} #{json['forecasts'][1]['date']}
+            #{json['forecasts'][1]['telop']} 最高:#{json['forecasts'][1]['max']['celsius']} 最低:#{json['forecasts'][1]['min']['celsius']}
 
-              #{json['forecasts'][2]['dateLabel']} #{json['forecasts'][2]['date']}
-              #{json['forecasts'][2]['telop']} 最高:#{json['forecasts'][2]['max']['celsius']} 最低:#{json['forecasts'][2]['min']['celsius']}
-              """
+            #{json['forecasts'][2]['dateLabel']} #{json['forecasts'][2]['date']}
+            #{json['forecasts'][2]['telop']} 最高:#{json['forecasts'][2]['max']['celsius']} 最低:#{json['forecasts'][2]['min']['celsius']}
+            """
 
       msg.send res
