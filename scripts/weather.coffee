@@ -98,13 +98,14 @@ module.exports = (robot) ->
       else
         area = 1
 
-    request = msg.http('http://weather.livedoor.com/forecast/webservice/json/v1?city=' + area)
+    pos = "http://weather.livedoor.com/forecast/webservice/json/v1?city=" + area
+    request = msg.http(pos)
     .get()
 
     request (err, res, body) ->
       json = JSON.parse body
       if area == 1
-        res = '( ͡° ͜ʖ ͡° )'
+        res = '?'
       else
         res = """
               #{json['publicTime']} 発表
