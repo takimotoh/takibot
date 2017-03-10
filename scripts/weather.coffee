@@ -114,7 +114,7 @@ module.exports = (robot) ->
               #{json['forecasts'][0]['telop']} 最高:#{json['forecasts'][0]['max']['celsius']} 最低:#{json['forecasts'][0]['min']['celsius']}
 
               #{json['forecasts'][1]['dateLabel']} #{json['forecasts'][1]['date']}
-              #{json['forecasts'][1]['telop']} 最高:#{json['forecasts'][1]['max']['celsius']} 最低:#{json['forecasts'][1['min']['celsius']}
+              #{json['forecasts'][1]['telop']} 最高:#{json['forecasts'][1]['max']['celsius']} 最低:#{json['forecasts'][1]['min']['celsius']}
 
               #{json['forecasts'][2]['dateLabel']} #{json['forecasts'][2]['date']}
               #{json['forecasts'][2]['telop']} 最高:#{json['forecasts'][2]['max']['celsius']} 最低:#{json['forecasts'][2]['min']['celsius']}
