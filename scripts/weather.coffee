@@ -110,7 +110,11 @@ module.exports = (robot) ->
       time = json['publicTime'].replace(/[T]/g, " ")
       time = time[0..15]
 
-      msg.send time
+      msg.send json['forecasts'][0]['dateLabel']
+      msg.send json['forecasts'][0]['date']
+      msg.send json['forecasts'][0]['telop']
+      msg.send json['forecasts'][0]['max']['celsius']
+      msg.send json['forecasts'][0]['min']['celsius']
 
       res = ""
 
