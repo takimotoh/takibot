@@ -112,18 +112,12 @@ module.exports = (robot) ->
 
       msg.send time
 
-      res = """
-            #{time} 発表
-            #{json['title']}
+      res = ""
 
-            #{json['forecasts'][0]['dateLabel']} #{json['forecasts'][0]['date']}
-            #{json['forecasts'][0]['telop']} 最高:#{json['forecasts'][0]['max']['celsius']} 最低:#{json['forecasts'][0]['min']['celsius']}
+      for i in [0..2]
+        res = res + "\n" + json['forecasts'][i]['dateLabel'] + json['forecasts'][i]['date']
+        res = res + "\n" + json['forecasts'][i]['telop'] + "最高:" + json['forecasts'][i]['max']['celsius'] + "最低:" + json['forecasts'][i]['min']['celsius']
 
-            #{json['forecasts'][1]['dateLabel']} #{json['forecasts'][1]['date']}
-            #{json['forecasts'][1]['telop']} 最高:#{json['forecasts'][1]['max']['celsius']} 最低:#{json['forecasts'][1]['min']['celsius']}
-
-            #{json['forecasts'][2]['dateLabel']} #{json['forecasts'][2]['date']}
-            #{json['forecasts'][2]['telop']} 最高:#{json['forecasts'][2]['max']['celsius']} 最低:#{json['forecasts'][2]['min']['celsius']}
-            """
+      res = time + "発表" + "\n" + json['title'] + res
 
       msg.send res
