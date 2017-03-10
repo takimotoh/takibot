@@ -99,6 +99,9 @@ module.exports = (robot) ->
         area = 1
 
     pos = "http://weather.livedoor.com/forecast/webservice/json/v1?city=" + area
+
+    msg.send pos
+
     request = msg.http(pos)
     .get()
 
