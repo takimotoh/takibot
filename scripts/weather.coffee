@@ -126,6 +126,24 @@ module.exports = (robot) ->
       min2 = "最低:" + json['forecasts'][1]['temperature']['min']['celsius'] + "℃"
       min3 = "最低:" + json['forecasts'][2]['temperature']['min']['celsius'] + "℃"
 
+      msg.send time
+      msg.send title
+      msg.send dateLabel1
+      msg.send dateLabel2
+      msg.send dateLabel3
+      msg.send day1
+      msg.send day2
+      msg.send day3
+      msg.send telop1
+      msg.send telop2
+      msg.send telop3
+      msg.send max1
+      msg.send max2
+      msg.send max3
+      msg.send min1
+      msg.send min2
+      msg.send min3
+
       res = """
             time
             title
