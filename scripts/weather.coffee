@@ -120,12 +120,12 @@ module.exports = (robot) ->
       telop1 = json['forecasts'][0]['telop']
       telop2 = json['forecasts'][1]['telop']
       telop3 = json['forecasts'][2]['telop']
-      max1 = "最高:" + json['forecasts'][0]['temperature']['max']['celsius'] + "℃"
-      max2 = "最高:" + json['forecasts'][1]['temperature']['max']['celsius'] + "℃"
-      max3 = "最高:" + json['forecasts'][2]['temperature']['max']['celsius'] + "℃"
-      min1 = "最低:" + json['forecasts'][0]['temperature']['min']['celsius'] + "℃"
-      min2 = "最低:" + json['forecasts'][1]['temperature']['min']['celsius'] + "℃"
-      min3 = "最低:" + json['forecasts'][2]['temperature']['min']['celsius'] + "℃"
+      max1 = "最高:" + json['forecasts'][0]['temperature']['max']['celsius']
+      max2 = "最高:" + json['forecasts'][1]['temperature']['max']['celsius']
+      max3 = "最高:" + json['forecasts'][2]['temperature']['max']['celsius']
+      min1 = "最低:" + json['forecasts'][0]['temperature']['min']['celsius']
+      min2 = "最低:" + json['forecasts'][1]['temperature']['min']['celsius']
+      min3 = "最低:" + json['forecasts'][2]['temperature']['min']['celsius']
 
       msg.send time
       msg.send title
