@@ -110,27 +110,19 @@ module.exports = (robot) ->
       time = json['publicTime'].replace(/[T]/g, " ")
       time = time[0..15]
 
-      res = time + "発表" + "\n" + json['title'] + "\n" +
-            json['forecasts'][0]['dateLabel'] +
-            "(" + json['forecasts'][0]['date'] + ")" + "\n" +
+      res = time + "発表" + "\n" +
+            json['title'] + "\n" +
+            json['forecasts'][0]['dateLabel'] + "(" + json['forecasts'][0]['date'] + ")" + "\n" +
             "  " + json['forecasts'][0]['telop'] + " " +
-            "最高:" + json['forecasts'][0]['temperature']['max']['celsius'] +
-            "℃" +
-            "最低:" + json['forecasts'][0]['temperature']['min']['celsius'] +
-            "℃" + "\n" +
-            json['forecasts'][1]['dateLabel'] +
-            "(" + json['forecasts'][1]['date'] + ")" + "\n" +
+            "最高:" + json['forecasts'][0]['temperature']['max']['celsius'] + "℃" +
+            " 最低:" + json['forecasts'][0]['temperature']['min']['celsius'] + "℃" + "\n" +
+            json['forecasts'][1]['dateLabel'] + "(" + json['forecasts'][1]['date'] + ")" + "\n" +
             "  " + json['forecasts'][1]['telop'] + " " +
-            "最高:" + json['forecasts'][1]['temperature']['max']['celsius'] +
-            "℃" +
-            "最低:" + json['forecasts'][1]['temperature']['min']['celsius'] +
-            "℃" + "\n" +
-            json['forecasts'][2]['dateLabel'] +
-            "(" + json['forecasts'][2]['date'] + ")" + "\n" +
+            "最高:" + json['forecasts'][1]['temperature']['max']['celsius'] + "℃" +
+            " 最低:" + json['forecasts'][1]['temperature']['min']['celsius'] + "℃" + "\n" +
+            json['forecasts'][2]['dateLabel'] + "(" + json['forecasts'][2]['date'] + ")" + "\n" +
             "  " + json['forecasts'][2]['telop'] + " " +
-            "最高:" + json['forecasts'][2]['temperature']['max']['celsius'] +
-            "℃" +
-            "最低:" + json['forecasts'][2]['temperature']['min']['celsius'] +
-            "℃"
+            "最高:" + json['forecasts'][2]['temperature']['max']['celsius'] + "℃" +
+            " 最低:" + json['forecasts'][2]['temperature']['min']['celsius'] + "℃"
 
       msg.send res
