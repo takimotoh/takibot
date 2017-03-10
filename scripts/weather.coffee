@@ -98,7 +98,7 @@ module.exports = (robot) ->
       else
         area = 1
 
-    request = msg.http('http://weather.livedoor.com/forecast/webservice/json/v1?city=' & area)
+    request = msg.http('http://weather.livedoor.com/forecast/webservice/json/v1?city=' + area)
     .get()
 
     request (err, res, body) ->
