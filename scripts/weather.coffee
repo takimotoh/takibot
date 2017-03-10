@@ -120,8 +120,14 @@ module.exports = (robot) ->
       res = ""
 
       for i in [0..2]
-        res = res + "\n" + json['forecasts'][i]['dateLabel'] + json['forecasts'][i]['date']
-        res = res + "\n" + json['forecasts'][i]['telop'] + "最高:" + json['forecasts'][i]['max']['celsius'] + "最低:" + json['forecasts'][i]['min']['celsius']
+        res = res + "\n" +
+              json['forecasts'][i]['dateLabel'] +
+              "(" + json['forecasts'][i]['date'] + ")"
+
+        res = res + "\n" +
+              json['forecasts'][i]['telop'] + " " +
+              "最高:" + json['forecasts'][i]['temperature']['max']['celsius'] + "℃" +
+              "最低:" + json['forecasts'][i]['temperature']['min']['celsius'] + "℃"
 
       res = time + "発表" + "\n" + json['title'] + res
 
