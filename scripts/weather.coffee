@@ -108,7 +108,7 @@ module.exports = (robot) ->
       json = JSON.parse body
 
       time = json['publicTime'].replace(/[T]/g, " ")
-      time = time.replace(/"\+0900"/g, "")
+      time = time[0..15]
 
       msg.send time
 
