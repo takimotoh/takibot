@@ -110,29 +110,31 @@ module.exports = (robot) ->
       time = json['publicTime'].replace(/[T]/g, " ")
       time = time[0..15] + "発表"
       title = son['title']
-      dateLabel[0] = json['forecasts'][0]['dateLabel']
-      dateLabel[1] = json['forecasts'][1]['dateLabel']
-      dateLabel[2] = json['forecasts'][2]['dateLabel']
-      day[0] = "(" + json['forecasts'][0]['date'] + ")"
-      day[1] = "(" + json['forecasts'][1]['date'] + ")"
-      day[2] = "(" + json['forecasts'][2]['date'] + ")"
-      telop[0] = json['forecasts'][0]['telop']
-      telop[1] = json['forecasts'][1]['telop']
-      telop[2] = json['forecasts'][2]['telop']
-      max[0] = "最高:" + json['forecasts'][0]['temperature']['max']['celsius'] + "℃"
-      max[1] = "最高:" + json['forecasts'][1]['temperature']['max']['celsius'] + "℃"
-      max[2] = "最高:" + json['forecasts'][2]['temperature']['max']['celsius'] + "℃"
-      min[0] = "最低:" + json['forecasts'][0]['temperature']['min']['celsius'] + "℃"
-      min[1] = "最低:" + json['forecasts'][1]['temperature']['min']['celsius'] + "℃"
-      min[2] = "最低:" + json['forecasts'][2]['temperature']['min']['celsius'] + "℃"
+      dateLabel1 = json['forecasts'][0]['dateLabel']
+      dateLabel2 = json['forecasts'][1]['dateLabel']
+      dateLabel3 = json['forecasts'][2]['dateLabel']
+      day1 = "(" + json['forecasts'][0]['date'] + ")"
+      day2 = "(" + json['forecasts'][1]['date'] + ")"
+      day3 = "(" + json['forecasts'][2]['date'] + ")"
+      telop1 = json['forecasts'][0]['telop']
+      telop2 = json['forecasts'][1]['telop']
+      telop3 = json['forecasts'][2]['telop']
+      max1 = "最高:" + json['forecasts'][0]['temperature']['max']['celsius'] + "℃"
+      max2 = "最高:" + json['forecasts'][1]['temperature']['max']['celsius'] + "℃"
+      max3 = "最高:" + json['forecasts'][2]['temperature']['max']['celsius'] + "℃"
+      min1 = "最低:" + json['forecasts'][0]['temperature']['min']['celsius'] + "℃"
+      min2 = "最低:" + json['forecasts'][1]['temperature']['min']['celsius'] + "℃"
+      min3 = "最低:" + json['forecasts'][2]['temperature']['min']['celsius'] + "℃"
 
-      res = time + "\n" +
-            title + "\n" +
-            dateLabel[0] + " " + day[0] + "\n" +
-            " " + telop[0] + " " + max[0] + " " + min[0] + "\n" +
-            dateLabel[1] + " " + day[1] + "\n" +
-            " " + telop[1] + " " + max[1] + " " + min[1] + "\n" +
-            dateLabel[2] + " " + day[2] + "\n" +
-            " " + telop[2] + " " + max[2] + " " + min[2]
+      res = """
+            time
+            title
+            #{dateLabel1} #{day1}
+              #{telop1} #{max1} #{min1}
+            #{dateLabel2} #{day2}
+              #{telop2} #{max2} #{min2}
+            #{dateLabel3} #{day3}
+              #{telop3} #{max3} #{min3}
+            """
 
       msg.send res
