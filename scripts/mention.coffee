@@ -2,13 +2,14 @@ module.exports = (robot) ->
 
   robot.hear /^＠(.*)/i, (msg) ->
 
-    from = msg.message.user.name                     # 発言者
-    to = msg.match[1].split(/\r\n|\n|\r|\s/)[0]         # 発進先
-    # message = msg.match[1].split(/\n|\r\n|\s/)[1]    # メッセージ
-    message = msg.match[1].replace(/[\r\n|\n|\r|\s]/g, "")     # メッセージ
-    message = message.replace(to, "")     # メッセージ
+    from = msg.message.user.name                   # 発言者
+    to = msg.match[1].split(/\r\n|\n|\r|\s/)[0]    # 発進先
 
-    unless message?
+    # メッセージ 空白・改行を削除し、送信先も削除
+    message = msg.match[1].replace(/[\r\n|\n|\r|\s]/g, "")
+    message = message.replace(to, "")
+
+    if message is ""
       sendMessage = "@#{from} ｽﾞｲ₍₍(ง˘ω˘)ว⁾⁾ｽﾞｲ"
       msg.send sendMessage
       return
