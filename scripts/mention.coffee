@@ -92,7 +92,7 @@ module.exports = (robot) ->
     if mention is "ohtakis"
       sendMessage = """
                     ＿人人人人人人＿
-                    ＞　@ohtakis　＜
+                    ＞  @takimotoh  ＜
                     ￣Y^Y^Y^Y^Y^￣
                     #{message}
                     """
