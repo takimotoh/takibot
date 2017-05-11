@@ -2,19 +2,19 @@ module.exports = (robot) ->
 
   robot.hear /^＠(.*)/i, (msg) ->
 
-    user = msg.message.user.name                       # 発言者
-    destination = msg.match[1].split(/\n|\r\n|\s/)[0]  # 発進先
-    message = msg.match[1].split(/\n|\r\n|\s/)[1]      # メッセージ
+    from = msg.message.user.name                     # 発言者
+    to = msg.match[1].split(/\n|\r\n|\s/)[0]         # 発進先
+    message = msg.match[1].split(/\n|\r\n|\s/)[1]    # メッセージ
 
     unless message?
-      sendMessage = "@#{user} ｽﾞｲ₍₍(ง˘ω˘)ว⁾⁾ｽﾞｲ"
+      sendMessage = "@#{from} ｽﾞｲ₍₍(ง˘ω˘)ว⁾⁾ｽﾞｲ"
       msg.send sendMessage
       return
 
     #********#
     # 送信先 #
     #********#
-    switch destination
+    switch to
 
       # 田中 寿法
       when "寿さん", "寿", "代表", "社長", "シャッチョさん"
@@ -82,7 +82,7 @@ module.exports = (robot) ->
 
       # 指定外
       else
-        sendMessage = "@#{user} ('ω') ﾀﾞﾚ?"
+        sendMessage = "@#{from} ('ω') ﾀﾞﾚ?"
         msg.send sendMessage
         return
 
@@ -97,7 +97,7 @@ module.exports = (robot) ->
                     #{message}
                     """
     else
-      # sendMessage = '@#{mention}  from:#{user}\n#{message}'
-      sendMessage = '@takimotoh  from:takimotoh\naaabbb'
+      # sendMessage = '@#{mention}  from:#{from}\n#{message}'
+      sendMessage = "@#{mention}  from:#{from}\n#{message}"
 
     msg.send sendMessage
