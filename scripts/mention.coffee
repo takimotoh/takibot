@@ -97,6 +97,7 @@ module.exports = (robot) ->
                     #{message}
                     """
     else
-      sendMessage = '@#{mention}  from:#{user}\n#{message}'
+      # sendMessage = '@#{mention}  from:#{user}\n#{message}'
+      sendMessage = '@takimotoh  from:takimotoh\naaabbb'
 
     msg.send sendMessage
