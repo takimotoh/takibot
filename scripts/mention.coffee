@@ -4,8 +4,9 @@ module.exports = (robot) ->
 
     from = msg.message.user.name                     # 発言者
     to = msg.match[1].split(/\n|\r\n|\s/)[0]         # 発進先
-    message = msg.match[1].split(/\n|\r\n|\s/)[1]    # メッセージ
-    message = message.replace(/[\n|\r\n|\s]/g, "")     # メッセージ
+    # message = msg.match[1].split(/\n|\r\n|\s/)[1]    # メッセージ
+    message = msg.match[1].replace(/[\n|\r\n|\s]/g, "")     # メッセージ
+    message = msg.match[1].replace(to, "")     # メッセージ
 
     unless message?
       sendMessage = "@#{from} ｽﾞｲ₍₍(ง˘ω˘)ว⁾⁾ｽﾞｲ"
