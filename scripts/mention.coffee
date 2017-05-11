@@ -3,9 +3,9 @@ module.exports = (robot) ->
   robot.hear /^＠(.*)/i, (msg) ->
 
     from = msg.message.user.name                     # 発言者
-    to = msg.match[1].split(/\n|\r\n|\s/)[0]         # 発進先
+    to = msg.match[1].split(/\r\n|\n|\r/)[0]         # 発進先
     # message = msg.match[1].split(/\n|\r\n|\s/)[1]    # メッセージ
-    message = msg.match[1].replace(/[\n|\r\n|\s]/g, "")     # メッセージ
+    message = msg.match[1].replace(/[\r\n|\n|\r]/g, "")     # メッセージ
     message = message.replace(to, "")     # メッセージ
 
     unless message?
